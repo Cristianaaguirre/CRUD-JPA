@@ -1,6 +1,5 @@
 package libreria.persistencias;
 
-
-public class EditorialDAO {
-
+public class EditorialDAO extends EM{
+  
 }
