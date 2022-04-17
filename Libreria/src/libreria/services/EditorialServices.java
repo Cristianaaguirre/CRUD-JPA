@@ -40,7 +40,7 @@ public class EditorialServices {
     }
   }
 
-  public void actualizarAlta(Integer id, Boolean alta) throws Exception {
+  public void actualizarAltaEditor(Integer id, Boolean alta) throws Exception {
     try {
       if (eDAO.buscarID(id) == null) {
         throw new Exception("OBJETO NO ENCONTRADO");

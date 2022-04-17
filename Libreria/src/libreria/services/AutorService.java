@@ -38,13 +38,39 @@ public class AutorService {
     }
   }
 
-  public Autor buscarPorID(Integer aux) throws Exception {
+  public Autor buscarID(Integer aux) throws Exception {
     try {
       if (aux < 0) {
         throw new Exception("NUMERO NEGATIVO");
       }
       Autor autor = aDao.buscarPorID(aux);
       return autor;
+    } catch (Exception e) {
+      throw e;
+    }
+  }
+  
+    public void actualizarNombreAutor(Integer id, String name) throws Exception {
+    try {
+      if (aDao.buscarPorID(id) == null) {
+        throw new Exception("OBJETO NO ENCONTRADO");
+      }
+      Autor aux2 = aDao.buscarPorID(id);
+      aux2.setName(name.toUpperCase());
+      aDao.actualizarAutor(aux2);
+    } catch (Exception e) {
+      throw e;
+    }
+  }
+
+  public void actualizarAltaAutor(Integer id, Boolean alta) throws Exception {
+    try {
+      if (aDao.buscarPorID(id) == null) {
+        throw new Exception("OBJETO NO ENCONTRADO");
+      }
+      Autor aux2 = aDao.buscarPorID(id);
+      aux2.setAlta(alta);
+      aDao.actualizarAutor(aux2);
     } catch (Exception e) {
       throw e;
     }
