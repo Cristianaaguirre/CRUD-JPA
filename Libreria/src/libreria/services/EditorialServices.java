@@ -1,6 +1,5 @@
 package libreria.services;
 
-import java.util.ArrayList;
 import java.util.List;
 import libreria.entidades.Editorial;
 import libreria.persistencias.EditorialDAO;
