@@ -1,5 +1,6 @@
 package libreria.persistencias;
 
+import java.util.List;
 import libreria.entidades.Autor;
 
 public class AutorDAO extends EM {
@@ -57,7 +58,17 @@ public class AutorDAO extends EM {
     try {
       if(aux.trim().isEmpty()) throw new Exception("CADENA VACIA");
       Autor aux2 = (Autor) em.createQuery("SELECT a FROM Autor a WHERE a.name LIKE :name").setParameter("name", aux).getSingleResult();
+      if(aux2 == null) throw new Exception("NO SE HA ENCONTRADO EL AUTOR");
       return aux2;
+    } catch (Exception e) {
+      throw e;
+    }
+  }
+  
+  public List<Autor> listarAutores() {
+    try {
+      List lista = em.createQuery("SELECT a FROM Autor a").getResultList();
+      return lista;
     } catch (Exception e) {
       throw e;
     }

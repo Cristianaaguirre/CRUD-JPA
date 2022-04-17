@@ -1,5 +1,7 @@
 package libreria.persistencias;
 
+import java.util.ArrayList;
+import java.util.List;
 import libreria.entidades.Editorial;
 
 public class EditorialDAO extends EM {
@@ -9,7 +11,7 @@ public class EditorialDAO extends EM {
       if (aux == null) {
         throw new Exception("OBJETO INVALIDO");
       }
-      em.getTransaction();
+      em.getTransaction().begin();
       em.persist(aux);
       em.getTransaction().commit();
     } catch (Exception e) {
@@ -62,6 +64,16 @@ public class EditorialDAO extends EM {
       }
       Editorial aux2 = (Editorial) em.createQuery("SELECT e FROM Editorial WHERE name LIKE :name").setParameter("name", aux).getSingleResult();
       return aux2;
+    } catch (Exception e) {
+      throw e;
+    }
+  }
+  
+  public List<Editorial> listarEditoriales() throws Exception {
+    try {
+      List<Editorial> lista = em.createQuery("SELECT e FROM Editorial e").getResultList();
+      if(lista == null || lista.isEmpty()) throw new Exception("LISTA VACIA");
+      return lista;
     } catch (Exception e) {
       throw e;
     }

@@ -1,5 +1,7 @@
 package libreria.services;
 
+import java.util.ArrayList;
+import java.util.List;
 import libreria.entidades.Editorial;
 import libreria.persistencias.EditorialDAO;
 
@@ -74,6 +76,27 @@ public class EditorialServices {
       if(eDAO.buscarID(aux) == null) throw new Exception("OBJETO NO ENCONTRADO");
       Editorial autor = eDAO.buscarID(aux);
       return autor;
+    } catch (Exception e) {
+      throw e;
+    }
+  }
+  
+  public List<Editorial> listarEditoriales() throws Exception {
+    try {
+      List lista = eDAO.listarEditoriales();
+      if(lista.isEmpty()) throw new Exception("LISTA VACIA");
+      return lista;
+    } catch (Exception e) {
+      throw e;
+    }
+  }
+  
+  public void listarNombreEditorials() throws Exception {
+    try {
+      if(eDAO.listarEditoriales()==null) throw new Exception("LISTA VACIA");
+      eDAO.listarEditoriales().forEach((aux) -> {
+        System.out.println(aux.getName());
+      });
     } catch (Exception e) {
       throw e;
     }

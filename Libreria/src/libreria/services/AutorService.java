@@ -1,5 +1,6 @@
 package libreria.services;
 
+import java.util.List;
 import libreria.entidades.Autor;
 import libreria.persistencias.AutorDAO;
 
@@ -50,7 +51,28 @@ public class AutorService {
     }
   }
   
-    public void actualizarNombreAutor(Integer id, String name) throws Exception {
+  public List<Autor> listarAutores() throws Exception {
+    try {
+      if(aDao.listarAutores() == null) throw new Exception("LA LISTA ESTA VACIA");
+      List lista = aDao.listarAutores();
+      return lista;
+    } catch (Exception e) {
+      throw e;
+    }
+  }
+  
+  public void listarNombresAutores() throws Exception{
+    try {
+      if(aDao.listarAutores() == null) throw new Exception("LISTA VACIA");
+      aDao.listarAutores().forEach((aux) -> {
+          System.out.println(aux.getName());
+      });
+    } catch (Exception e) {
+      throw e;
+    }
+  }
+  
+  public void actualizarNombreAutor(Integer id, String name) throws Exception {
     try {
       if (aDao.buscarPorID(id) == null) {
         throw new Exception("OBJETO NO ENCONTRADO");
