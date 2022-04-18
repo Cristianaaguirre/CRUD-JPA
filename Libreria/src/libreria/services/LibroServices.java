@@ -51,7 +51,7 @@ public class LibroServices {
       throw e;
     }
   }
-
+  
   public Libro buscarISBN(Long aux) throws Exception {
     try {
       if (aux < 0) {
@@ -117,6 +117,15 @@ public class LibroServices {
       if (lista.isEmpty()) {
         throw new Exception("NO HAY LIBROS DE ESTA EDITORIAL");
       }
+      return lista;
+    } catch (Exception e) {
+      throw e;
+    }
+  }
+  
+  public ArrayList<Libro> listarEjemplares () throws Exception {
+    try {
+      ArrayList lista =  (ArrayList) lDAO.listarLibros();
       return lista;
     } catch (Exception e) {
       throw e;
