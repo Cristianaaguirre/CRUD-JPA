@@ -17,7 +17,7 @@ public class Menu {
     this.menuLibro = new MenuLibro();
   }
 
-  public void abrirMenu() {
+  public void abrirMenu() throws Exception {
     try {
       Scanner sc = new Scanner(System.in).useDelimiter("\n");
       Boolean close = false;

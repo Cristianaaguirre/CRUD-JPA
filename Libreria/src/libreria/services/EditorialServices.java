@@ -17,10 +17,6 @@ public class EditorialServices {
       if (eDAO.buscarID(id) != null) {
         throw new Exception("EL ID YA SE ENCUENTRA REGISTRADO");
       }
-      if (name.trim().isEmpty()) {
-        throw new Exception("CADENA VACIA");
-      }
-
       Editorial aux = new Editorial(id, name, alta);
       eDAO.crearEditor(aux);
     } catch (Exception e) {
@@ -69,9 +65,6 @@ public class EditorialServices {
 
   public Editorial buscarEditorPorID(Integer aux) throws Exception {
     try {
-      if (aux < 0) {
-        throw new Exception("NUMERO NEGATIVO");
-      }
       if(eDAO.buscarID(aux) == null) throw new Exception("OBJETO NO ENCONTRADO");
       Editorial autor = eDAO.buscarID(aux);
       return autor;
@@ -103,7 +96,6 @@ public class EditorialServices {
   
   public void eliminarEditorial(Integer aux) throws Exception{
     try {
-      if(aux < 0) throw new Exception("NUMERO INVALIDO");
       if(eDAO.buscarID(aux) == null) throw new Exception("OBJETO NO ENCONTRADO");
       Editorial aux2 = eDAO.buscarID(aux);
       eDAO.eliminarEditor(aux2);
