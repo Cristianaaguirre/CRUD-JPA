@@ -52,6 +52,15 @@ public class LibroServices {
     }
   }
   
+  public void eliminarLibro(Long isbn) throws Exception {
+    try {
+      Libro aux = lDAO.buscarISBN(isbn);
+      lDAO.eliminarLibro(aux);
+    } catch (Exception e) {
+      throw e;
+    }
+  }
+  
   public Libro buscarISBN(Long aux) throws Exception {
     try {
       if (aux < 0) {
